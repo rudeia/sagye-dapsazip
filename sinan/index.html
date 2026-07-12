@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="사계 동아리 답사 프로젝트 중 신안군 섬 지역을 다루는 학생용 답사지입니다." />
+<meta name="keywords" content="신안군, 답사, 지리, 임자도, 자은도, 암태도, 안좌도, 압해도, 팔금도, 갯벌, 사구, 간척, 통합사회 1, 통합사회 2, 세계시민과 지리, 한국지리 탐구" />
+<meta name="author" content="사계 동아리" />
+<meta name="theme-color" content="#1f6f78" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="사계 답사집" />
+<meta property="og:description" content="사계 동아리 답사 프로젝트 중 신안군 섬 지역의 지형·생태·교통·산업·문화경관을 관찰하고 기록하는 학생용 답사지." />
+<meta property="og:locale" content="ko_KR" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="사계 답사집" />
+<meta name="twitter:description" content="사계 동아리 답사 프로젝트 중 신안군 섬 지역의 지형·생태·교통·산업·문화경관을 관찰하고 기록하는 학생용 답사지." />
+<title>사계 답사집 - 신안 섬 탐방기</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ8k0CjkGEffxFwbBBmS5Gbnmiyw7w=" crossorigin="" />
+<link rel="stylesheet" href="styles.css?v=20260711-2" />
+<body>
+
+<a href="#content" class="skip-link">본문 바로가기</a>
+
+<noscript>
+<div class="noscript-fallback">
+<h2>JavaScript가 비활성화되어 있습니다</h2>
+<p>이 페이지는 JavaScript로 답사 카드를 동적으로 렌더링합니다. 브라우저 설정에서 JavaScript를 활성화한 뒤 새로고침해 주세요. 활성화가 어려운 경우 아래 목차를 참고할 수 있습니다.</p>
+<p><b>다루는 6개 섬 · 18개 답사지</b></p>
+<ul>
+<li><b>Ⅰ. 임자도</b> — 대광해수욕장 · 전장포마을 · 용난굴</li>
+<li><b>Ⅱ. 자은도</b> — 백길해수욕장 · 둔장 해변 공원 · 1004 뮤지엄 파크(양산해변)</li>
+<li><b>Ⅲ. 암태도</b> — 추포해수욕장 및 노둣길 · 생낌항 · 암태 오도 선착장 주변</li>
+<li><b>Ⅳ. 안좌도</b> — 퍼플섬과 퍼플교(반월도·박지도) · 자라도(간척 평야) · 태양광 발전소(스마트팜 앤 쏠라시티)</li>
+<li><b>Ⅴ. 압해도</b> — 송공항 일대 · 분매리 해안 · 노루섬(바깥노루섬)</li>
+<li><b>Ⅵ. 팔금도</b> — 서근등대 · 고산선착장 · 이목리마을(간척 농경지)</li>
+</ul>
+<p><b>답사 흐름</b>: 사전학습 → 현장 관찰·측정 → 사후 토론·보고. 물때 필수/권장/참고 배지, 성취기준 태그, GPS 좌표, 체크리스트, 학생 기록, 원리 해설 카드는 JavaScript가 활성화된 환경에서 사용할 수 있습니다.</p>
+</div>
+</noscript>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="badge">2022 개정 교육과정 연계</div>
+    <div class="curriculum-line">통합사회 1 · 통합사회 2 · 세계시민과 지리 · 한국지리 탐구</div>
+    <h1>사계 답사집<br><span class="hero-subtitle-inline">신안 섬 탐방기</span></h1>
+    <details class="hero-description"><summary><span class="open-label">소개 더보기</span><span class="close-label">소개 닫기</span></summary><p>사계 동아리 답사 프로젝트의 신안군 섬 지역 파트입니다. 신안의 해안 지형, 갯벌, 간척지, 항구, 재생에너지, 문화경관을 현장에서 관찰하고 기록합니다.</p></details>
+    <div class="hero-actions" aria-label="답사지 보조 도구">
+      <a href="../index.html" class="btn secondary">대문으로</a>
+      <a href="#content" class="btn">신안 탐방 시작하기</a>
+      <button class="secondary" onclick="togglePrintMode('full')">전체 인쇄 / PDF</button>
+      <button class="secondary" onclick="togglePrintMode('worksheet')">워크시트 인쇄</button>
+      <button class="secondary" onclick="exportReport()">보고서 내보내기</button>
+      <a href="https://padlet.com/momoskqk/2026_sagye_dapsa" class="btn secondary" target="_blank" rel="noopener noreferrer">사진·기록 업로드</a>
+      <button class="secondary" onclick="resetNotes()">기록 초기화</button>
+    </div>
+  </div>
+</header>
+<nav class="topbar">
+  <div class="navwrap">
+    <div class="tabs" id="tabs"></div>
+    <input class="search" id="search" placeholder="장소·개념 검색 예: 갯벌, 사구, 태양광" />
+  </div>
+</nav>
+<main id="content">
+
+  <section class="panel compact-guide" id="student-guide">
+    <div class="kicker">답사지 진행 현황</div>
+    <h2>장소 설명을 먼저 읽고, 현장에서 기록하기</h2>
+    <p class="text">각 답사지의 설명을 읽은 뒤, 지도에서 위치를 확인하고 현장 체크리스트를 완성합니다. 물때·과목 연계 배지의 <b>?</b> 표시에 마우스를 올리거나 터치하면 도움말을 볼 수 있습니다.</p>
+    <details class="curriculum-help">
+      <summary>과목 연계 내용 요소 보기</summary>
+      <div class="curriculum-grid">
+        <div class="curriculum-item"><b>통합사회 1</b><span>자연환경과 인간 생활의 관계, 인간과 자연의 상호작용, 지역의 공간적 특성을 실제 사례로 확인합니다.</span></div>
+        <div class="curriculum-item"><b>통합사회 2</b><span>지역 변화, 산업·교통·관광의 발달, 개발과 보전의 선택이 공동체와 생활공간에 미치는 영향을 살펴봅니다.</span></div>
+        <div class="curriculum-item"><b>세계시민과 지리</b><span>장소성과 지역 이미지, 여행과 관광의 의미, 지속가능한 여행 태도, 지역과 세계가 연결되는 방식을 탐구합니다.</span></div>
+        <div class="curriculum-item"><b>한국지리 탐구</b><span>우리나라의 지형·기후·인구·산업·교통·지역 문제를 자료와 현장 관찰을 통해 탐구하고 대안을 생각합니다.</span></div>
+      </div>
+    </details>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width:0%"></div></div>
+      <div id="progress-text" class="progress-text">현재 답사지 체크리스트: 0 / 0 항목 (0%)</div>
+    </div>
+  </section>
+
+  <section class="panel map-panel" id="map-section">
+    <div class="kicker">답사지 지도</div>
+    <h2>18개 답사지 위치 확인</h2>
+    <p class="map-title-note">여섯 섬의 대표색을 함께 사용한 전체 답사지 지도입니다. 마커 색으로 섬을 구분해 보세요.</p>
+    <div id="field-map" aria-label="신안군 답사지 지도"></div>
+    <div class="map-legend-row" id="map-island-legend" aria-label="섬별 대표색 범례"></div>
+    <div class="map-status-line" id="map-status-line">지도가 좁게 보이면 아래의 ‘지도 다시 불러오기’를 누르거나 화면을 한 번 회전해 보세요.</div>
+    <div class="map-toolbar">
+      <button type="button" onclick="reloadFieldMap()">지도 다시 불러오기</button>
+      <a href="https://www.khoa.go.kr/swtc/main.do" target="_blank" rel="noopener">국립해양조사원 물때 조회</a>
+      <a href="https://www.openstreetmap.org/#map=10/34.86/126.16" target="_blank" rel="noopener">OpenStreetMap에서 보기</a>
+      <a href="https://map.naver.com/p/search/%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84%20%EC%8B%A0%EC%95%88%EA%B5%B0" target="_blank" rel="noopener">신안군 네이버 지도</a>
+    </div>
+    <div class="map-fallback" id="map-fallback">지도가 보이지 않으면 인터넷 연결, 학교망의 외부 지도 차단, 또는 Leaflet CDN 로딩 제한 때문일 수 있습니다. 이 경우 각 답사지 카드의 <b>지도에서 보기</b> 또는 <b>입력 좌표 지도 표시</b> 버튼을 사용해 새 창 지도로 확인하세요.</div>
+    <p class="map-note">※ 지도 마커는 공식 주소와 공개 지도 좌표를 바탕으로 보정했습니다. 다만 자연 지형 또는 접근 지점이 여러 개인 장소는 수업용 개략 위치이므로, 실제 이동 전에는 교사의 안내와 공식 지도, 현장 안전 정보를 함께 확인하세요.<br>○ 흰색 테두리 마커는 기본 위치, 검은색 테두리 마커는 학생이 입력한 좌표입니다. 학생 좌표를 입력하면 해당 답사지의 기본 마커는 숨겨지고, 입력값을 지우면 기본 마커가 다시 나타납니다.</p>
+  </section>
+
+  <section id="islandView" class="grid"></section>
+
+  <p class="footer-note">사계 동아리 답사 프로젝트 자료 기반: 「신안군 섬 지역 심층 지리 답사 자료집(팔금 보완)」. 물때는 국립해양조사원 스마트 조석예보에서 답사일과 인근 예보지점을 확인합니다. 사진은 공식·공개 자료를 우선 연결했으며, 정확한 장소 사진 확보가 어려운 지점은 현장 사진 기록 활동으로 보완할 수 있습니다. 학술 용어 해설은 자료집 원문과 표준 지리학 개념에 근거합니다. <a href="../docs/source_verification.md" target="_blank" rel="noopener">출처·검증 기록 보기</a></p>
+</main>
+
+
+<div class="photo-modal" id="photo-modal" role="dialog" aria-modal="true" aria-label="사진 확대 보기">
+  <div class="photo-modal-box">
+    <div class="photo-modal-head">
+      <div class="photo-modal-title" id="photo-modal-title">사진 확대 보기</div>
+      <button class="photo-modal-close" type="button" onclick="closePhotoModal()" aria-label="닫기">×</button>
+    </div>
+    <div class="photo-modal-body">
+      <img id="photo-modal-img" alt="확대 사진">
+      <p class="photo-modal-caption" id="photo-modal-caption"></p>
+      <div class="photo-modal-actions"><a id="photo-modal-source" href="#" target="_blank" rel="noopener">출처로 이동</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="data.js?v=20260711"></script>
+<script src="app.js?v=20260712"></script>
+</body>
+</html>

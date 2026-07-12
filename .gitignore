@@ -1,0 +1,13 @@
+.DS_Store
+**/.DS_Store
+
+# Local drafts stay outside the public deployment repository.
+drafts/
+
+# Local editor and temporary files
+*.tmp
+*.swp
+*~
+
+# Vercel local project metadata
+.vercel/
