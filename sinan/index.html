@@ -7,6 +7,11 @@
 <meta name="keywords" content="신안군, 답사, 지리, 임자도, 자은도, 암태도, 안좌도, 압해도, 팔금도, 갯벌, 사구, 간척, 통합사회 1, 통합사회 2, 세계시민과 지리, 한국지리 탐구" />
 <meta name="author" content="사계 동아리" />
 <meta name="theme-color" content="#1f6f78" />
+<meta name="application-name" content="사계 답사집" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="사계 답사집" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="사계 답사집" />
 <meta property="og:description" content="사계 동아리 답사 프로젝트 중 신안군 섬 지역의 지형·생태·교통·산업·문화경관을 관찰하고 기록하는 학생용 답사지." />
@@ -15,8 +20,13 @@
 <meta name="twitter:title" content="사계 답사집" />
 <meta name="twitter:description" content="사계 동아리 답사 프로젝트 중 신안군 섬 지역의 지형·생태·교통·산업·문화경관을 관찰하고 기록하는 학생용 답사지." />
 <title>사계 답사집 - 신안 섬 탐방기</title>
+<link rel="manifest" href="../manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="48x48" href="../icons/favicon-48.png" />
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ8k0CjkGEffxFwbBBmS5Gbnmiyw7w=" crossorigin="" />
 <link rel="stylesheet" href="styles.css?v=20260712-1" />
+<link rel="stylesheet" href="../pwa-install.css?v=20260819" />
+</head>
 <body>
 
 <a href="#content" class="skip-link">본문 바로가기</a>
@@ -47,6 +57,7 @@
     <div class="hero-actions" aria-label="답사지 보조 도구">
       <a href="../index.html" class="btn secondary">대문으로</a>
       <a href="#content" class="btn">신안 탐방 시작하기</a>
+      <button class="secondary" type="button" data-pwa-install-button><img class="pwa-install-button-icon" src="../icons/app-icon-192.png" alt="" />앱 설치</button>
       <button class="secondary" onclick="togglePrintMode('full')">전체 인쇄 / PDF</button>
       <button class="secondary" onclick="togglePrintMode('worksheet')">워크시트 인쇄</button>
       <button class="secondary" onclick="exportReport()">보고서 내보내기</button>
@@ -122,5 +133,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="data.js?v=20260711"></script>
 <script src="app.js?v=20260712"></script>
+<script src="../pwa-install.js?v=20260819" defer></script>
 </body>
 </html>

@@ -13,3 +13,6 @@ drafts/
 .vercel/
 .vercel
 .env*.local
+
+# Image-generation working file; optimized app icons are tracked separately.
+icons/app-icon-source.png

@@ -1,0 +1,48 @@
+{
+  "id": "./",
+  "name": "사계 답사집",
+  "short_name": "사계 답사집",
+  "description": "신안과 제주를 걷고 관찰하며 기록하는 사계 동아리 디지털 답사집",
+  "lang": "ko-KR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f8f5",
+  "theme_color": "#0f766e",
+  "orientation": "any",
+  "categories": ["education", "travel"],
+  "icons": [
+    {
+      "src": "./icons/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/app-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "신안 섬 탐방기",
+      "short_name": "신안 답사지",
+      "url": "./sinan/index.html",
+      "icons": [{ "src": "./icons/app-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "제주 탐방기",
+      "short_name": "제주 답사지",
+      "url": "./jeju/index.html",
+      "icons": [{ "src": "./icons/app-icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

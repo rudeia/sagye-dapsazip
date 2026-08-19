@@ -1,0 +1,103 @@
+[data-pwa-install-button] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+[data-pwa-install-button][hidden] { display: none !important; }
+
+.pwa-install-button-icon {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  object-fit: cover;
+  box-shadow: 0 2px 7px rgba(15, 23, 42, .18);
+}
+
+.pwa-guide[hidden] { display: none !important; }
+
+.pwa-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.pwa-guide-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 22, 30, .64);
+  backdrop-filter: blur(3px);
+}
+
+.pwa-guide-dialog {
+  position: relative;
+  width: min(100%, 440px);
+  max-height: min(86vh, 620px);
+  overflow: auto;
+  padding: 26px;
+  border: 1px solid #cbdde3;
+  border-radius: 8px;
+  background: #fff;
+  color: #172033;
+  box-shadow: 0 22px 60px rgba(10, 22, 30, .28);
+}
+
+.pwa-guide-app {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.pwa-guide-app img {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  box-shadow: 0 5px 14px rgba(15, 23, 42, .14);
+}
+
+.pwa-guide-app strong { display: block; font-size: 18px; }
+.pwa-guide-app span { display: block; margin-top: 2px; color: #64748b; font-size: 13px; }
+.pwa-guide-dialog h2 { margin: 0 38px 9px 0; font-size: 22px; letter-spacing: 0; }
+.pwa-guide-dialog p { margin: 0; color: #526076; line-height: 1.7; }
+.pwa-guide-dialog ol { margin: 18px 0 0; padding-left: 22px; }
+.pwa-guide-dialog li { margin: 10px 0; color: #334155; line-height: 1.6; }
+
+.pwa-guide-close {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #fff;
+  color: #172033;
+  box-shadow: none;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pwa-guide-close:hover { background: #f1f5f9; }
+.pwa-guide-close:focus-visible { outline: 3px solid rgba(15, 118, 110, .28); outline-offset: 2px; }
+body.pwa-guide-open { overflow: hidden; }
+
+@media (max-width: 540px) {
+  .pwa-guide { padding: 14px; }
+  .pwa-guide-dialog { padding: 22px 20px; }
+}
+
+@media print {
+  [data-pwa-install-button],
+  .pwa-guide { display: none !important; }
+}
